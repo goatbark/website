@@ -124,6 +124,90 @@ body {
     gap: 2rem;
 }
 
+/* =========================
+   Top bar scroll progress
+   ========================= */
+.navbar { gap: 1.25rem; flex-wrap: nowrap; }
+
+.nav-progress {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    max-width: 520px;
+    min-width: 140px;
+
+    pointer-events: none;
+}
+
+.nav-progress-track {
+    width: 100%;
+    height: 3px;
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+        0 0 0 rgba(255, 0, 0, 0);
+
+    overflow: hidden;
+    position: relative;
+}
+
+.nav-progress-fill {
+    --p: 0;
+    height: 100%;
+    width: 0%;
+
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 999px;
+
+    position: relative;
+    transition: width 0.10s linear;
+}
+
+.nav-progress-tip {
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+
+    /* Torch-like glow: bright core + soft falloff */
+    background: radial-gradient(
+        circle,
+        #ff5a5a 0%,
+        #ff3b3b 35%,
+        rgba(255, 59, 59, 0.60) 55%,
+        rgba(255, 59, 59, 0.25) 70%,
+        rgba(255, 59, 59, 0) 100%
+    );
+
+    filter:
+        blur(0.2px)
+        drop-shadow(0 0 6px rgba(255, 80, 80, 0.80))
+        drop-shadow(0 0 14px rgba(255, 60, 60, 0.60))
+        drop-shadow(0 0 28px rgba(255, 40, 40, 0.40));
+
+    opacity: calc(var(--p) * 1);
+
+    /* Subtle living flicker */
+    animation: torch-flicker 1.8s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .nav-progress-fill { transition: none; }
+    .nav-progress-tip { animation: none; }
+}
+
+
 .nav-link {
     font-family: var(--font-body);
     font-size: 0.9rem;
@@ -244,6 +328,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    opacity: 0;
+    transform: translateY(10px);
+    animation: heroIn 900ms cubic-bezier(0.2, 0.9, 0.2, 1) 200ms forwards;
+    will-change: opacity, transform;
 }
 
 .logo-image {
@@ -591,6 +680,11 @@ body {
     background: var(--bg-dark);
     text-align: center;
     border-top: 1px solid rgba(246, 180, 193, 0.1);
+
+    /* Needed for background + animated fade layers */
+    position: relative;
+    overflow: hidden;
+    --footer-fade: 0.75; /* default strength; JS will animate */
 }
 
 .social-links {
@@ -818,6 +912,26 @@ html.lenis body {
     background-repeat: no-repeat;
     z-index: 0;
 }
+#contact::after {
+    /* Bottom fade to avoid a hard cutoff; opacity animated on scroll */
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: clamp(120px, 18vh, 220px);
+    background: linear-gradient(
+        to bottom,
+        rgba(4, 6, 11, 0) 0%,
+        rgba(4, 6, 11, 0.7) 55%,
+        rgba(4, 6, 11, 1) 100%
+    );
+    opacity: var(--footer-fade, 0.75);
+    transition: opacity 160ms linear;
+    z-index: 0;
+    pointer-events: none;
+}
+
 
 #contact > * {
     position: relative;
@@ -937,35 +1051,79 @@ html.lenis body {
     transform: translateX(1.5vw);
 }
 
+/* Mobile polish: keep nav from overflowing + keep hero centered */
+@media (max-width: 640px) {
+    .navbar {
+        top: 0.6rem;
+        padding: 0.65rem 1rem;
+        width: calc(100vw - 1.5rem);
+        gap: 0.65rem;
+    }
+
+    .nav-logo-img {
+        height: 24px;
+    }
+
+    .nav-links {
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .nav-link {
+        font-size: 0.72rem;
+        padding: 0.35rem 0.45rem;
+        letter-spacing: 0.08em;
+    }
+
+    .hero-content {
+        transform: none; /* stop the horizontal nudge on small screens */
+        padding: 1.5rem;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .nav-progress {
+        order: 3;
+        flex-basis: 100%;
+        max-width: none;
+        min-width: 0;
+        margin-top: 0.18rem;
+    }
+
+    .nav-progress-track {
+        height: 3px;
+    }
+
+    .nav-progress-tip {
+        width: 10px;
+        height: 10px;
+        right: -6px;
+    }
+
+    .nav-progress-tip::after {
+        left: -18px;
+        width: 22px;
+        height: 14px;
+    }
+
 }
 
+@media (max-width: 420px) {
+    .navbar {
+        padding: 0.6rem 0.85rem;
+    }
 
+    .nav-links {
+        gap: 0.45rem;
+    }
 
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 999px;
-    z-index: 2000;
-
-    pointer-events: none;
-    opacity: 1;
-    display: block;
-
-    /* Prevent accidental centering from transforms/margins */
-    margin: 0;
-    transform: none;
+    .nav-link {
+        font-size: 0.68rem;
+    }
 }
-
-/* Hide on small screens */
-@media (max-width: 768px) {
-    }
-
-/* Hide on small screens */
-@media (max-width: 768px) {
-    }
-
-
-/* Hide on small screens */
-@media (max-width: 768px) {
-    }
 
 
 /* =========================
@@ -1076,4 +1234,412 @@ body.lightbox-open {
     transform: translateY(-2px);
     box-shadow: 0 0 18px rgba(255, 80, 80, 0.6);
     background: rgba(255, 80, 80, 0.22);
+}
+
+
+
+/* === Intro animations === */
+@keyframes heroIn{
+  from{ opacity: 0; transform: translateY(14px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+@keyframes aboutFloat{
+  0%{ transform: translateY(0); }
+  50%{ transform: translateY(-3px); }
+  100%{ transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .logo-container,
+  .about-btn-wrap{
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* === About Me button (glass pill + icon) === */
+.about-btn-wrap{
+  margin-top: 6px; /* closer to bottom of logo */
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: heroIn 900ms cubic-bezier(0.2, 0.9, 0.2, 1) 420ms forwards, aboutFloat 7.5s ease-in-out 1600ms infinite;
+  will-change: opacity, transform;
+}
+
+.about-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 8px 18px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,0.92);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 10px 35px rgba(0,0,0,0.35),
+    0 0 22px rgba(255, 60, 60, 0.16);
+
+  cursor: pointer;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease,
+    border-color 220ms ease;
+}
+
+.about-btn-icon{
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  line-height: 1;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.20);
+  box-shadow: 0 0 16px rgba(255, 60, 60, 0.12);
+  flex: 0 0 auto;
+}
+
+.about-btn-text{
+  display: inline-block;
+  transform: translateY(0.5px); /* optical alignment */
+}
+
+.about-btn:hover{
+  transform: translateY(-2px) scale(1.02);
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.28);
+  box-shadow:
+    0 14px 45px rgba(0,0,0,0.42),
+    0 0 26px rgba(255, 60, 60, 0.22);
+}
+
+.about-btn:hover .about-btn-icon{
+  box-shadow: 0 0 18px rgba(255, 60, 60, 0.22);
+}
+
+.about-btn:active{
+  transform: translateY(0) scale(0.98);
+}
+
+.about-btn:focus-visible{
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(255, 60, 60, 0.35),
+    0 14px 45px rgba(0,0,0,0.42),
+    0 0 26px rgba(255, 60, 60, 0.22);
+}
+
+@media (max-width: 480px){
+  .about-btn-wrap{ margin-top: 4px; }
+  .about-btn{
+    font-size: 11px;
+    padding: 7px 16px;
+    letter-spacing: 0.11em;
+  }
+}
+
+/* === About Me modal === */
+.about-modal{
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 220ms ease, visibility 220ms ease;
+}
+
+.about-modal.active{
+  opacity: 1;
+  visibility: visible;
+}
+
+.about-dialog{
+  position: relative;
+  width: min(560px, 100%);
+  border-radius: 18px;
+  padding: 22px 20px 18px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 26px 80px rgba(0,0,0,0.55),
+    0 0 30px rgba(255, 60, 60, 0.14);
+  transform: translateY(10px) scale(0.98);
+  opacity: 0;
+  transition: transform 240ms ease, opacity 240ms ease;
+  outline: none;
+}
+
+.about-modal.active .about-dialog{
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.about-close{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(0,0,0,0.25);
+  color: rgba(255,255,255,0.9);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.about-close:hover{
+  transform: scale(1.04);
+  background: rgba(0,0,0,0.35);
+}
+
+.about-title{
+  margin: 4px 0 10px;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+.about-body p{
+  margin: 10px 0;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.88);
+}
+
+.about-note{
+  margin-top: 14px;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.about-note code{
+  background: rgba(0,0,0,0.25);
+  padding: 2px 6px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+html.modal-open,
+body.modal-open{
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .about-btn,
+  .about-modal,
+  .about-dialog{
+    transition: none !important;
+  }
+}
+/* Flame tail for the torch tip (adds a small “comet” / flame look) */
+.nav-progress-tip::after {
+    content: "";
+    position: absolute;
+    left: -22px;               /* tail extends behind the tip */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 26px;
+    height: 16px;
+    border-radius: 999px;
+
+    /* layered glow: bright near the tip, softer as it trails off */
+    background:
+        radial-gradient(ellipse at 92% 50%,
+            rgba(255, 90, 90, 0.95) 0%,
+            rgba(255, 60, 60, 0.55) 35%,
+            rgba(255, 60, 60, 0.0) 72%),
+        linear-gradient(to left,
+            rgba(255, 60, 60, 0.40) 0%,
+            rgba(255, 60, 60, 0.18) 35%,
+            rgba(255, 60, 60, 0.0) 90%);
+
+    filter:
+        blur(0.3px)
+        drop-shadow(0 0 8px rgba(255, 70, 70, 0.55))
+        drop-shadow(0 0 18px rgba(255, 50, 50, 0.35));
+    opacity: 0.95;
+    pointer-events: none;
+}
+
+
+
+
+/* =========================
+   Clients logo strip (between media sections)
+   ========================= */
+#clients{
+  padding: clamp(2.8rem, 6vw, 4.5rem) clamp(1rem, 5vw, 4rem);
+  background: var(--bg-dark);
+  border-top: 1px solid rgba(246, 180, 193, 0.08);
+  border-bottom: 1px solid rgba(246, 180, 193, 0.08);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.clients-inner{
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.clients-kicker{
+  margin-bottom: 1.35rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.clients-marquee{
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  padding: 18px 22px;
+
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* soft edge fade so the movement feels “infinite” */
+.clients-marquee::before,
+.clients-marquee::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: min(16vw, 140px);
+  pointer-events: none;
+  z-index: 2;
+}
+.clients-marquee::before{
+  left: 0;
+  background: linear-gradient(to right, rgba(8,20,32,1), rgba(8,20,32,0));
+}
+.clients-marquee::after{
+  right: 0;
+  background: linear-gradient(to left, rgba(8,20,32,1), rgba(8,20,32,0));
+}
+
+.clients-track{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.25rem, 4vw, 3rem);
+  width: max-content;
+  margin: 0 auto;
+
+  animation: clients-oscillate 16s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.clients-track img{
+  height: 44px;
+  width: auto;
+  display: block;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 18px rgba(0, 0, 0, 0.45));
+  transition: opacity 180ms ease, transform 180ms ease, filter 180ms ease;
+}
+
+.clients-marquee:hover .clients-track{
+  animation-play-state: paused;
+}
+
+.clients-marquee:hover .clients-track img{
+  opacity: 0.95;
+}
+
+.clients-track img:hover{
+  opacity: 1;
+  transform: translateY(-2px);
+  filter: drop-shadow(0 0 22px rgba(0, 0, 0, 0.60));
+}
+
+@keyframes clients-oscillate{
+  from{ transform: translateX(-8%); }
+  to{ transform: translateX(8%); }
+}
+
+@media (max-width: 640px){
+  .clients-track{ animation-duration: 22s; }
+  .clients-track img{ height: 34px; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .clients-track{ animation: none !important; transform: none !important; }
+}
+
+
+/* Client logo hover glow */
+.client-logo {
+  filter: brightness(0.9);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.client-logo:hover {
+  filter:
+    brightness(1.15)
+    drop-shadow(0 0 10px rgba(246, 180, 193, 0.45))
+    drop-shadow(0 0 22px rgba(168, 80, 97, 0.35))
+    drop-shadow(0 0 38px rgba(168, 80, 97, 0.25));
+  transform: translateY(-2px);
+}
+
+
+/* Increase spacing between client logos */
+.client-strip-track {
+  gap: clamp(3rem, 6vw, 6rem);
+}
+
+.client-logo {
+  margin: 0 1.5rem;
+}
+
+
+/* Photography camera subheading */
+.camera-subtitle {
+  margin-top: -2.1rem;
+  margin-bottom: 3rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  text-align: center;
 }

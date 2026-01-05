@@ -1,245 +1,253 @@
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>goatbark</title>
-    <meta name="description"
-        content="Professional video editing portfolio of Dylan Hunt. Cinematic storytelling, motion graphics, and creative visual content.">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&display=swap"
-        rel="stylesheet">
-
-    <link href="assets/favicon.ico" rel="icon">
-
-    <!-- Modern Animation Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<meta charset="utf-8"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>goatbark</title>
+<meta content="Professional video editing portfolio of Dylan Hunt. Cinematic storytelling, motion graphics, and creative visual content." name="description"/>
+<link href="styles.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.ico" rel="icon"/>
+<!-- Modern Animation Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
-
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <a href="#hero" class="nav-logo" aria-label="Home">
-            <img src="assets/star.png" alt="GOAT icon" class="nav-logo-img">
-        </a>
-        <div class="nav-links">
-            <a href="#portfolio" class="nav-link">3D &amp; Editing</a>
-            <a href="#photography" class="nav-link">Photography &amp; Stills</a>
-            <a href="#contact" class="nav-link">Contact</a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="hero-video-container">
-            <video class="hero-video" autoplay muted loop playsinline>
-                <source src="assets/2024.mp4" type="video/mp4">
-            </video>
-            <div class="hero-overlay"></div>
-        </div>
-
-        <div class="hero-content">
-            <!-- Replaced text title with PNG logo -->
-            <div class="logo-container">
-                <img src="assets/logo.png" alt="GOAT logo" class="logo-image">
-            </div>
+<!-- Navigation -->
+<nav class="navbar">
+<a aria-label="Home" class="nav-logo" href="#hero">
+<img alt="GOAT icon" class="nav-logo-img" src="assets/star.png"/>
+</a><div aria-hidden="true" class="nav-progress"><div class="nav-progress-track"><div class="nav-progress-fill" id="scrollProgressFill"><span class="nav-progress-tip"></span></div></div></div>
+<div class="nav-links">
+<a class="nav-link" href="#portfolio">3D &amp; Editing</a>
+<a class="nav-link" href="#photography">Photography &amp; Stills</a>
+<a class="nav-link" href="#contact">Contact</a>
 </div>
-    </section>
+</nav>
+<!-- Hero Section -->
+<section id="hero">
+<div class="hero-video-container">
+<video autoplay="" class="hero-video" loop="" muted="" playsinline="">
+<source src="assets/2024.mp4" type="video/mp4"/>
+</video>
+<div class="hero-overlay"></div>
+</div>
+<div class="hero-content">
+<!-- Replaced text title with PNG logo -->
+<div class="logo-container">
+<img alt="GOAT logo" class="logo-image" src="assets/logo.png"/>
+</div>
+<div aria-label="About section" class="about-btn-wrap">
+<button aria-controls="aboutModal" aria-haspopup="dialog" class="about-btn" id="aboutBtn" type="button">
+<span aria-hidden="true" class="about-btn-icon">ⓘ</span>
+<span class="about-btn-text">About Me</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Portfolio Section -->
+<section id="portfolio">
+<h2 class="section-title section-title--glass">3D <span class="ampersand">&amp;</span> Editing</h2>
+<p class="section-subtitle">Commercial · Esports</p>
+<div class="portfolio-grid">
+<!-- Video Card 1 - Large -->
+<a class="video-card video-card--large lightbox-trigger" data-id="phaseguard" data-type="youtube" data-url="https://youtu.be/gZPyHib9GNw?si=fT0jF1pLJoxPyMIE" href="#">
+<img alt="FAINT" class="video-thumbnail" src="assets/thumb-02.jpg"/>
+<div class="video-overlay">
+<span class="play-icon">▶</span>
+<span class="video-title">PHASEGUARD - VALORANT</span>
+</div>
+</a>
+<!-- Video Card 2 - Medium -->
+<a class="video-card video-card--medium lightbox-trigger" data-id="faint" data-type="youtube" data-url="https://www.youtube.com/watch?v=ShvhqBSIeNc" href="#">
+<img alt="Project Title 02" class="video-thumbnail" src="assets/faint.jpg"/>
+<div class="video-overlay">
+<span class="play-icon">▶</span>
+<span class="video-title">FAINT - SENTINELS</span>
+</div>
+</a>
+<!-- Video Card 3 - Small -->
+<a class="video-card video-card--small lightbox-trigger" data-id="ora" data-type="youtube" data-url="https://youtu.be/XkM2spbL-ns?si=4RXsjaB-REqaF4Yr" href="#">
+<img alt="Project Title 03" class="video-thumbnail" src="assets/thumb-03.jpg"/>
+<div class="video-overlay">
+<span class="play-icon">▶</span>
+<span class="video-title">ORA - VALORANT</span>
+</div>
+</a>
+<!-- Video Card 4 - Tall -->
+<a class="video-card video-card--tall lightbox-trigger" data-id="YOUR_VIDEO_ID_4" data-type="youtube" data-url="https://www.youtube.com/watch?v=4RZWcWmfb90&t=1s" href="#">
+<img alt="Project Title 04" class="video-thumbnail" src="assets/thumb-04.jpg"/>
+<div class="video-overlay">
+<span class="play-icon">▶</span>
+<span class="video-title">MASTERS TORONTO OPENING - VALORANT</span>
+</div>
+</a>
+<!-- Video Card 5 - Small -->
+<a class="video-card video-card--small lightbox-trigger" data-id="YOUR_VIDEO_ID_5" data-type="youtube" data-url="https://youtu.be/Stye9ot1l64?si=28u7nd1MwkA2o3hW" href="#">
+<img alt="Project Title 05" class="video-thumbnail" src="assets/thumb-05.jpg"/>
+<div class="video-overlay">
+<span class="play-icon">▶</span>
+<span class="video-title">IGNITION - VALORANT</span>
+</div>
+</a>
+<!-- Video Card 6 - Wide -->
+<a class="video-card video-card--wide lightbox-trigger" data-id="YOUR_VIDEO_ID_6" data-type="youtube" data-url="https://youtu.be/BFct5jNhorE?si=v3FVc7m5opHYW0jF" href="#">
+<img alt="Project Title 06" class="video-thumbnail" src="assets/thumb-06.jpg"/>
+<div class="video-overlay">
+<span class="play-icon">▶</span>
+<span class="video-title">VCT BUNDLE 24 - LOUD</span>
+</div>
+</a>
+<!-- Video Card 7 - Medium -->
+<a class="video-card video-card--medium lightbox-trigger" data-id="YOUR_VIDEO_ID_7" data-type="youtube" data-url="https://www.youtube.com/watch?v=PZkuPAMK4sI" href="#">
+<img alt="Project Title 07" class="video-thumbnail" src="assets/thumb-07.jpg"/>
+<div class="video-overlay">
+<span class="play-icon">▶</span>
+<span class="video-title">CHAMPIONS 25' OPENING - VALORANT</span>
+</div>
+</a>
+<!-- Video Card 8 - Large -->
+<a class="video-card video-card--large lightbox-trigger" data-id="champs24" data-type="youtube" data-url="https://youtu.be/Gok8tG9D3qE?si=L_x2Kx16Zw4Li17S" href="#">
+<img alt="Project Title 08" class="video-thumbnail" src="assets/thumb-09.jpg"/>
+<div class="video-overlay">
+<span class="play-icon">▶</span>
+<span class="video-title">CHAMPIONS 24' OPENING - VALORANT</span>
+</div>
+</a>
+<!-- Video Card 9 - Large -->
+<a class="video-card video-card--large lightbox-trigger" data-id="DRX" data-type="youtube" data-url="https://youtu.be/VuDnZ4GfDI8?si=1F2RLw1-YcWEzjRQ" href="#">
+<img alt="Project Title 08" class="video-thumbnail" src="assets/thumb-08.jpg"/>
+<div class="video-overlay">
+<span class="play-icon">▶</span>
+<span class="video-title">VCT BUNDLE 24 - DRX GLOBAL</span>
+</div>
+</a>
+</div>
+</section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio">
-        <h2 class="section-title section-title--glass">3D <span class="ampersand">&amp;</span> Editing</h2>
-        <p class="section-subtitle">Commercial · Esports</p>
-
-        <div class="portfolio-grid">
-            <!-- Video Card 1 - Large -->
-            <a href="#" class="video-card video-card--large lightbox-trigger" data-type="youtube" data-id="ShvhqBSIeNc" data-url="https://www.youtube.com/watch?v=ShvhqBSIeNc">
-                <img class="video-thumbnail" src="assets/faint.jpg" alt="FAINT">
-                <div class="video-overlay">
-                    <span class="play-icon">▶</span>
-                    <span class="video-title">FAINT</span>
-                </div>
-            </a>
-
-            <!-- Video Card 2 - Medium -->
-            <a href="#" class="video-card video-card--medium lightbox-trigger" data-type="youtube" data-id="YOUR_VIDEO_ID_2" data-url="https://youtube.com/watch?v=YOUR_VIDEO_ID_2">
-                <img class="video-thumbnail" src="assets/thumb-02.jpg" alt="Project Title 02">
-                <div class="video-overlay">
-                    <span class="play-icon">▶</span>
-                    <span class="video-title">Project Title 02</span>
-                </div>
-            </a>
-
-            <!-- Video Card 3 - Small -->
-            <a href="#" class="video-card video-card--small lightbox-trigger" data-type="youtube" data-id="YOUR_VIDEO_ID_3" data-url="https://youtube.com/watch?v=YOUR_VIDEO_ID_3">
-                <img class="video-thumbnail" src="assets/thumb-03.jpg" alt="Project Title 03">
-                <div class="video-overlay">
-                    <span class="play-icon">▶</span>
-                    <span class="video-title">Project Title 03</span>
-                </div>
-            </a>
-
-            <!-- Video Card 4 - Tall -->
-            <a href="#" class="video-card video-card--tall lightbox-trigger" data-type="youtube" data-id="YOUR_VIDEO_ID_4" data-url="https://youtube.com/watch?v=YOUR_VIDEO_ID_4">
-                <img class="video-thumbnail" src="assets/thumb-04.jpg" alt="Project Title 04">
-                <div class="video-overlay">
-                    <span class="play-icon">▶</span>
-                    <span class="video-title">Project Title 04</span>
-                </div>
-            </a>
-
-            <!-- Video Card 5 - Small -->
-            <a href="#" class="video-card video-card--small lightbox-trigger" data-type="youtube" data-id="YOUR_VIDEO_ID_5" data-url="https://youtube.com/watch?v=YOUR_VIDEO_ID_5">
-                <img class="video-thumbnail" src="assets/thumb-05.jpg" alt="Project Title 05">
-                <div class="video-overlay">
-                    <span class="play-icon">▶</span>
-                    <span class="video-title">Project Title 05</span>
-                </div>
-            </a>
-
-            <!-- Video Card 6 - Wide -->
-            <a href="#" class="video-card video-card--wide lightbox-trigger" data-type="youtube" data-id="YOUR_VIDEO_ID_6" data-url="https://youtube.com/watch?v=YOUR_VIDEO_ID_6">
-                <img class="video-thumbnail" src="assets/thumb-06.jpg" alt="Project Title 06">
-                <div class="video-overlay">
-                    <span class="play-icon">▶</span>
-                    <span class="video-title">Project Title 06</span>
-                </div>
-            </a>
-
-            <!-- Video Card 7 - Medium -->
-            <a href="#" class="video-card video-card--medium lightbox-trigger" data-type="youtube" data-id="YOUR_VIDEO_ID_7" data-url="https://youtube.com/watch?v=YOUR_VIDEO_ID_7">
-                <img class="video-thumbnail" src="assets/thumb-07.jpg" alt="Project Title 07">
-                <div class="video-overlay">
-                    <span class="play-icon">▶</span>
-                    <span class="video-title">Project Title 07</span>
-                </div>
-            </a>
-
-            <!-- Video Card 8 - Large -->
-            <a href="#" class="video-card video-card--large lightbox-trigger" data-type="youtube" data-id="YOUR_VIDEO_ID_8" data-url="https://youtube.com/watch?v=YOUR_VIDEO_ID_8">
-                <img class="video-thumbnail" src="assets/thumb-08.jpg" alt="Project Title 08">
-                <div class="video-overlay">
-                    <span class="play-icon">▶</span>
-                    <span class="video-title">Project Title 08</span>
-                </div>
-            </a>
-
-                        <!-- Video Card 9 - Large -->
-            <a href="#" class="video-card video-card--large lightbox-trigger" data-type="youtube" data-id="YOUR_VIDEO_ID_8" data-url="https://youtube.com/watch?v=YOUR_VIDEO_ID_8">
-                <img class="video-thumbnail" src="assets/thumb-08.jpg" alt="Project Title 08">
-                <div class="video-overlay">
-                    <span class="play-icon">▶</span>
-                    <span class="video-title">Project Title 08</span>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Photography Section -->
-    <section id="photography">
-        <h2 class="section-title section-title--glass">Photography <span class="ampersand">&amp;</span> Stills</h2>
-
-        <div class="photo-grid">
-            <!-- Photo 1 - Large -->
-            <div class="photo-card photo-card--large">
-                <img class="photo-image lightbox-trigger" src="assets/faint.jpg" alt="Photo 01" loading="lazy" data-type="image" data-src="assets/faint.jpg">
-            </div>
-
-            <!-- Photo 2 - Medium -->
-            <div class="photo-card photo-card--medium">
-                <img class="photo-image lightbox-trigger" src="assets/photo-02.jpg" alt="Photo 02" loading="lazy" data-type="image" data-src="assets/photo-02.jpg">
-            </div>
-
-            <!-- Photo 3 - Small -->
-            <div class="photo-card photo-card--small">
-                <img class="photo-image lightbox-trigger" src="assets/photo-03.jpg" alt="Photo 03" loading="lazy" data-type="image" data-src="assets/photo-03.jpg">
-            </div>
-
-            <!-- Photo 4 - Tall -->
-            <div class="photo-card photo-card--tall">
-                <img class="photo-image lightbox-trigger" src="assets/photo-04.jpg" alt="Photo 04" loading="lazy" data-type="image" data-src="assets/photo-04.jpg">
-            </div>
-
-            <!-- Photo 5 - Medium -->
-            <div class="photo-card photo-card--medium">
-                <img class="photo-image lightbox-trigger" src="assets/photo-05.jpg" alt="Photo 05" loading="lazy" data-type="image" data-src="assets/photo-05.jpg">
-            </div>
-
-            <!-- Photo 6 - Wide -->
-            <div class="photo-card photo-card--wide">
-                <img class="photo-image lightbox-trigger" src="assets/photo-06.jpg" alt="Photo 06" loading="lazy" data-type="image" data-src="assets/photo-06.jpg">
-            </div>
-
-            <!-- Photo 7 - Small -->
-            <div class="photo-card photo-card--small">
-                <img class="photo-image lightbox-trigger" src="assets/photo-03.jpg" alt="Photo 03" loading="lazy" data-type="image" data-src="assets/photo-03.jpg">
-            </div>
-        </div>
-    </section>
-
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox" aria-hidden="true">
-        <button class="lightbox-close" aria-label="Close">&times;</button>
-        <div class="lightbox-content" role="dialog" aria-modal="true">
-            <div id="lightbox-media" class="lightbox-media"></div>
-            <a id="lightbox-external" class="lightbox-external" href="#" target="_blank" rel="noopener">Open on YouTube</a>
-        </div>
+<!-- Clients Strip -->
+<section id="clients" aria-label="Client logos">
+  <div class="clients-inner">
+    <p class="clients-kicker">Clients</p>
+    <div class="clients-marquee">
+      <div class="clients-track">
+        <img src="assets/01-client_bw.png" alt="Client logo" loading="lazy"/>
+        <img src="assets/02-client_bw.png" alt="Client logo" loading="lazy"/>
+        <img src="assets/03-client_bw.png" alt="Client logo" loading="lazy"/>
+        <img src="assets/04-client_bw.png" alt="Client logo" loading="lazy"/>
+        <img src="assets/05-client_bw.png" alt="Client logo" loading="lazy"/>
+        <img src="assets/06-client_bw.png" alt="Client logo" loading="lazy"/>
+      </div>
     </div>
+  </div>
+</section>
 
+<!-- Photography Section -->
+<section id="photography">
+<h2 class="section-title section-title--glass">Photography <span class="ampersand">&amp;</span> Stills</h2>
+<p class="section-subtitle camera-subtitle">Sony A6700 · Canon R50</p>
+<div class="photo-grid">
+<!-- Photo 1 - Large -->
+<div class="photo-card photo-card--large">
+<img alt="Photo 01" class="photo-image lightbox-trigger" data-src="assets/photo-01.jpg" data-type="image" loading="lazy" src="assets/photo-01.jpg"/>
+</div>
+<!-- Photo 2 - Medium -->
+<div class="photo-card photo-card--medium">
+<img alt="Photo 02" class="photo-image lightbox-trigger" data-src="assets/photo-02.jpg" data-type="image" loading="lazy" src="assets/photo-02.jpg"/>
+</div>
+<!-- Photo 3 - Small -->
+<div class="photo-card photo-card--small">
+<img alt="Photo 03" class="photo-image lightbox-trigger" data-src="assets/photo-03.jpg" data-type="image" loading="lazy" src="assets/photo-03.jpg"/>
+</div>
+<!-- Photo 4 - Tall -->
+<div class="photo-card photo-card--tall">
+<img alt="Photo 04" class="photo-image lightbox-trigger" data-src="assets/photo-04.jpg" data-type="image" loading="lazy" src="assets/photo-04.jpg"/>
+</div>
+<!-- Photo 5 - Medium -->
+<div class="photo-card photo-card--medium">
+<img alt="Photo 05" class="photo-image lightbox-trigger" data-src="assets/photo-05.jpg" data-type="image" loading="lazy" src="assets/photo-05.jpg"/>
+</div>
+<!-- Photo 6 - Wide -->
+<div class="photo-card photo-card--wide">
+<img alt="Photo 06" class="photo-image lightbox-trigger" data-src="assets/photo-06.jpg" data-type="image" loading="lazy" src="assets/photo-06.jpg"/>
+</div>
+<!-- Photo 7 - Small -->
+<div class="photo-card photo-card--small">
+<img alt="Photo 03" class="photo-image lightbox-trigger" data-src="assets/photo-07.jpg" data-type="image" loading="lazy" src="assets/photo-07.jpg"/>
+</div>
+</div>
+</section>
+<!-- Lightbox Modal -->
+<div aria-hidden="true" class="lightbox" id="lightbox">
+<button aria-label="Close" class="lightbox-close">×</button>
+<div aria-modal="true" class="lightbox-content" role="dialog">
+<div class="lightbox-media" id="lightbox-media"></div>
+<a class="lightbox-external" href="#" id="lightbox-external" rel="noopener" target="_blank">Open on YouTube</a>
+</div>
+</div>
+<!-- About Me Modal -->
+<div aria-hidden="true" class="about-modal" id="aboutModal">
+<div aria-labelledby="aboutTitle" aria-modal="true" class="about-dialog" role="dialog" tabindex="-1">
+<button aria-label="Close About Me" class="about-close" type="button">×</button>
+<h3 class="about-title" id="aboutTitle">About Me</h3>
+<div class="about-body">
+<p>
+                    I’m Dylan, an Emmy Award Winning visual creator focused on <strong>3D, video, and compositing</strong> — crafting cinematic visual pieces for your favorite brands.
+                </p>
+<p>
+                    I value strong <strong>composition</strong>, <strong>lighting</strong>, and <strong>storytelling</strong> — whether it’s through my 3D, motion, or photography.
+                </p>
+<p class="about-note">
+                    Open For Work, Please reach out with any inquiries!
+                </p>
+</div>
+</div>
+</div>
 <!-- Contact Section -->
-    <footer id="contact">
-        <h2 class="section-title">Get In Touch</h2>
+<footer id="contact">
+<h2 class="section-title">Get In Touch!</h2>
+<div class="social-links">
+<a aria-label="Instagram" class="social-link" href="https://www.instagram.com/goatbrk/" rel="noopener" target="_blank">
+<svg fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+</svg>
+</a>
+<a aria-label="YouTube" class="social-link" href="https://www.youtube.com/@goatbark" rel="noopener" target="_blank">
+<svg fill="currentColor" viewbox="0 0 24 24">
+<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+</svg>
+</a>
+<a aria-label="TikTok" class="social-link" href="https://www.tiktok.com/@goatbark" rel="noopener" target="_blank">
+<svg fill="currentColor" viewbox="0 0 24 24">
+<path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"></path>
+</svg>
+</a>
+<a aria-label="X (Twitter)" class="social-link" href="https://x.com/goatbark" rel="noopener" target="_blank">
+<svg fill="currentColor" viewbox="0 0 24 24">
+<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+</svg>
+</a>
+<a aria-label="LinkedIn" class="social-link" href="https://www.linkedin.com/in/YOUR_USERNAME_HERE" rel="noopener" target="_blank">
+<svg fill="currentColor" viewbox="0 0 24 24">
+<path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 24h5V7H0v17zM7.5 7h4.8v2.4h.1c.67-1.27 2.3-2.6 4.74-2.6C21.4 6.8 24 9.28 24 14.36V24h-5v-8.4c0-2-.04-4.58-2.8-4.58-2.8 0-3.23 2.18-3.23 4.44V24h-5V7z"></path>
+</svg>
+</a>
 
-        <div class="social-links">
-            <a href="#" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                </svg>
-            </a>
-
-            <a href="https://www.youtube.com/@goatbark" class="social-link" aria-label="YouTube" target="_blank"
-                rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                </svg>
-            </a>
-
-            <a href="#" class="social-link" aria-label="TikTok" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
-                </svg>
-            </a>
-
-            <a href="#" class="social-link" aria-label="X (Twitter)" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-            </a>
-
-            <a href="mailto:contact@example.com" class="social-link" aria-label="Email">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                </svg>
-            </a>
-        </div>
-
-        <p class="copyright">© 2026 Dylan Hunt. All rights reserved.</p>
-    </footer>
-
-    <script src="script.js"></script>
-
-    <script>
+<a aria-label="Email" class="social-link" href="mailto:goatbark04@gmail.com?subject=Project%20Inquiry">
+<svg fill="currentColor" viewbox="0 0 24 24">
+<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
+</svg>
+</a>
+</div>
+<p class="copyright">© 2026 Dylan Hunt. All rights reserved.</p>
+</footer>
+<script src="script.js"></script>
+<script>
         (function () {
             const lightbox = document.getElementById('lightbox');
             const media = document.getElementById('lightbox-media');
@@ -331,8 +339,112 @@
         })();
     </script>
 
-</div>
+<script>
+/* About Me modal */
+(function () {
+  const btn = document.getElementById('aboutBtn');
+  const modal = document.getElementById('aboutModal');
+  const dialog = modal ? modal.querySelector('.about-dialog') : null;
+  const closeBtn = modal ? modal.querySelector('.about-close') : null;
 
+  if (!btn || !modal || !dialog || !closeBtn) return;
+
+  let lastActive = null;
+
+  function openModal() {
+    lastActive = document.activeElement;
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('modal-open');
+    document.body.classList.add('modal-open');
+    // focus after paint
+    requestAnimationFrame(() => dialog.focus());
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.documentElement.classList.remove('modal-open');
+    document.body.classList.remove('modal-open');
+    if (lastActive && typeof lastActive.focus === 'function') lastActive.focus();
+  }
+
+  btn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', (e) => {
+    // clicking outside the dialog closes
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+  });
+})();
+</script>
+<script>
+/* Footer fade scroll animation (subtle) */
+(function () {
+  const footer = document.getElementById('contact');
+  if (!footer) return;
+
+  let ticking = false;
+
+  function clamp(v, min, max) {
+    return Math.min(max, Math.max(min, v));
+  }
+
+  function update() {
+    ticking = false;
+    const r = footer.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+
+    // 0 when footer is off-screen; 1 when footer is mostly in view
+    const progress = clamp((vh - r.top) / (vh + r.height * 0.35), 0, 1);
+
+    // Subtle: fade gets a little stronger as you scroll into the footer
+    const opacity = 0.55 + 0.35 * progress; // 0.55 → 0.90
+    footer.style.setProperty('--footer-fade', opacity.toFixed(3));
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();
+</script><script>/* Top bar scroll progress (white bar + glowing red tip) */
+(function () {
+  const fill = document.getElementById('scrollProgressFill');
+  if (!fill) return;
+
+  let rafId = null;
+
+  function computeProgress() {
+    const doc = document.documentElement;
+    const scrollTop = window.scrollY || doc.scrollTop || 0;
+    const scrollHeight = doc.scrollHeight || 0;
+    const clientHeight = window.innerHeight || doc.clientHeight || 1;
+    const maxScroll = Math.max(1, scrollHeight - clientHeight);
+    const p = Math.min(1, Math.max(0, scrollTop / maxScroll));
+    fill.style.setProperty('--p', p.toString());
+    fill.style.width = (p * 100).toFixed(3) + '%';
+    rafId = null;
+  }
+
+  function onScroll() {
+    if (rafId) return;
+    rafId = requestAnimationFrame(computeProgress);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  computeProgress();
+})();</script>
 </body>
-
 </html>
