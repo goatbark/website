@@ -210,7 +210,7 @@
 </div>
 <!-- Contact Section -->
 <footer id="contact">
-<h2 class="section-title">Get In Touch!</h2>
+<h2 class="section-title">Get In Touch</h2>
 <div class="social-links">
 <a aria-label="Instagram" class="social-link" href="https://www.instagram.com/goatbrk/" rel="noopener" target="_blank">
 <svg fill="currentColor" viewbox="0 0 24 24">
@@ -273,6 +273,36 @@
                 }
             }
 
+
+            function extractYouTubeId(rawUrl) {
+                if (!rawUrl) return '';
+                try {
+                    const u = new URL(rawUrl);
+                    const host = (u.hostname || '').replace('www.', '');
+
+                    // youtu.be/<id>
+                    if (host === 'youtu.be') {
+                        return (u.pathname || '').split('/')[1] || u.pathname.replace('/', '');
+                    }
+
+                    // youtube.com/watch?v=<id>
+                    const v = u.searchParams.get('v');
+                    if (v) return v;
+
+                    // youtube.com/embed/<id> or /shorts/<id>
+                    const parts = (u.pathname || '').split('/').filter(Boolean);
+                    const embedIdx = parts.indexOf('embed');
+                    if (embedIdx !== -1 && parts[embedIdx + 1]) return parts[embedIdx + 1];
+                    const shortsIdx = parts.indexOf('shorts');
+                    if (shortsIdx !== -1 && parts[shortsIdx + 1]) return parts[shortsIdx + 1];
+
+                    return '';
+                } catch (e) {
+                    // If it's not a valid URL, return empty.
+                    return '';
+                }
+            }
+
             function showYouTube(videoId, url) {
                 const originParam = (window.location.origin && window.location.origin.startsWith('http'))
                     ? `&origin=${encodeURIComponent(window.location.origin)}`
@@ -313,8 +343,10 @@
 
                 const type = trigger.getAttribute('data-type');
                 if (type === 'youtube') {
-                    const id = trigger.getAttribute('data-id');
+                    let id = trigger.getAttribute('data-id');
                     const url = trigger.getAttribute('data-url') || '';
+                    // If data-id isn't a real YouTube video id, derive it from the URL
+                    if (!id || id.length < 8) id = extractYouTubeId(url);
                     if (id) showYouTube(id, url);
                 } else if (type === 'image') {
                     const src = trigger.getAttribute('data-src') || trigger.getAttribute('src');
