@@ -9,8 +9,78 @@ const lenis = new Lenis({
 function raf(time) {
     lenis.raf(time);
     requestAnimationFrame(raf);
+
+function initPhotoLazyLoad() {
+    const imgs = document.querySelectorAll('#photography img[data-src]');
+    if (!imgs.length) return;
+
+    const load = (img) => {
+        const realSrc = img.getAttribute('data-src');
+        if (!realSrc) return;
+        if (img.getAttribute('data-loaded') === 'true') return;
+
+        img.addEventListener('load', () => {
+            img.setAttribute('data-loaded', 'true');
+        }, { once: true });
+
+        img.src = realSrc;
+        img.removeAttribute('data-src');
+    };
+
+    if (!('IntersectionObserver' in window)) {
+        imgs.forEach(load);
+        return;
+    }
+
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                load(entry.target);
+                io.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '300px 0px' });
+
+    imgs.forEach(img => io.observe(img));
+}
+
 }
 requestAnimationFrame(raf);
+
+function initPhotoLazyLoad() {
+    const imgs = document.querySelectorAll('#photography img[data-src]');
+    if (!imgs.length) return;
+
+    const load = (img) => {
+        const realSrc = img.getAttribute('data-src');
+        if (!realSrc) return;
+        if (img.getAttribute('data-loaded') === 'true') return;
+
+        img.addEventListener('load', () => {
+            img.setAttribute('data-loaded', 'true');
+        }, { once: true });
+
+        img.src = realSrc;
+        img.removeAttribute('data-src');
+    };
+
+    if (!('IntersectionObserver' in window)) {
+        imgs.forEach(load);
+        return;
+    }
+
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                load(entry.target);
+                io.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '300px 0px' });
+
+    imgs.forEach(img => io.observe(img));
+}
+
 
 // Connect Lenis to GSAP ScrollTrigger
 lenis.on('scroll', ScrollTrigger.update);
@@ -311,6 +381,7 @@ function initLightbox() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initPhotoLazyLoad();
     initNavigation();
     initHeroAnimations();
     initPortfolioAnimations();

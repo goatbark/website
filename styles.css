@@ -619,7 +619,9 @@ body {
     background: var(--bg-accent);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     transform-style: preserve-3d;
-    will-change: transform;
+    content-visibility: auto;
+    contain-intrinsic-size: 250px 250px;
+    contain: layout paint style;
 }
 
 .photo-card:hover {
@@ -1642,4 +1644,10 @@ body.modal-open{
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.55);
   text-align: center;
+}
+
+
+.photo-card { will-change: auto; }
+@media (hover: hover) and (pointer: fine) {
+  .photo-card:hover { will-change: transform; }
 }
