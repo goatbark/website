@@ -1651,3 +1651,39 @@ body.modal-open{
 @media (hover: hover) and (pointer: fine) {
   .photo-card:hover { will-change: transform; }
 }
+
+/* =========================
+   Mobile header fixes (logo centered + progress/nav moved up)
+   ========================= */
+@media (max-width: 640px) {
+
+  /* Re-layout navbar vertically */
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding-top: 0.55rem;
+    padding-bottom: 0.6rem;
+  }
+
+  /* Center the star logo */
+  .nav-logo {
+    order: 1;
+    justify-content: center;
+  }
+
+  /* Move progress bar up */
+  .nav-progress {
+    order: 2;
+    width: 100%;
+    margin-top: -2px; /* pulls it upward */
+  }
+
+  /* Move nav links up and center them */
+  .nav-links {
+    order: 3;
+    justify-content: center;
+    width: 100%;
+    margin-top: -2px;
+  }
+}
